@@ -1,0 +1,28 @@
+
+.Menu{
+    border: 4px solid #4a4a4a;
+    padding: 10px 10px;
+    display:flex; 
+    flex-direction:row;
+    
+  }
+
+  .Start{
+    flex-grow: 1;
+  }
+
+  .Card{
+    border: 4px solid #4a4a4a;
+    block-size: fit-content(15px);
+    padding: 10px 10px;
+    margin: 15px 15px;
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .Board{
+    margin: auto;
+    width: 100%;
+    display:flex; 
+    flex-direction:row;
+  }
