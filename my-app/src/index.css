@@ -26,3 +26,10 @@
     display:flex; 
     flex-direction:row;
   }
+
+  .Input{
+    margin: auto;
+    width: 100%;
+    display:flex; 
+    flex-grow: 1;
+  }
