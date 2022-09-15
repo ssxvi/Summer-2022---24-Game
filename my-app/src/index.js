@@ -51,20 +51,25 @@ class Menu extends React.Component {
         return;
       }
 
-
+      if(!checkExpression(this.state.input, this.state.nums)){
+        this.setState({guessResult: 'Input is invalid! Try again', })
+        return;
+      }
 
       if(eval?.(this.state.input) === 24){
       
         if(is24){
 
-          this.setState({guessResult: 'Correct!', })
-
+          this.setState({guessResult: 'Correct! You win!' , })
 
         } else {
 
           this.setState({guessResult: 'Incorrect! 24 Cannot be made', })
 
         }
+        return;
+      } else {
+        this.setState({guessResult: 'Incorrect! Answer does not equal 24', })
         return;
       }
 
@@ -174,17 +179,28 @@ render() {
   }
 
 
-var checkExpression = function(str, list){
-      //parses expression to make sure it's valid 
-      let expression = str.slice();
+  var checkExpression = function(str, list){
+    //parses expression to make sure it's valid 
+    let expression = str.slice();
 
-      //removes each number and checks that they exist
-      for (let i = 0; i < list.length; i++){
-        let numIndex = toString(list[i]).indexOf();
-        if( numIndex != -1){
-          expression.splice(numIndex, 1);
-        }
+
+    let re = new RegExp("(\\(*[1-9]\\)*[\\+\\-\\/\\*]\\)*){3}(\\(*[1-9]\\)*)");
+
+    if(!re.test(expression)){
+      return false;
+    }
+
+    //removes each number and checks that they exist
+
+    for (let i = 0; i < list.length; i++){
+      let numIndex = expression.indexOf((list[i]).toString());
+
+      if( numIndex != -1){
+        expression = expression.substring(0, numIndex) + expression.substring(numIndex + 1, expression.length)
+      } else {
+        return false;
       }
+    }
 
-
-}
+    return true;
+  }
