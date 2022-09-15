@@ -4,7 +4,7 @@ import './normalize.css';
 import './sakura.css';
 import './index.css';
 
-
+//NEED TO EDIT AND CHANGE
 class Menu extends React.Component {
     render() {
       return (
