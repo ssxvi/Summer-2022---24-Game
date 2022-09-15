@@ -72,9 +72,6 @@ class Menu extends React.Component {
         this.setState({guessResult: 'Incorrect! Answer does not equal 24', })
         return;
       }
-
-      this.setState({guessResult: 'exception', })
-      return;
       
     }
 
@@ -114,9 +111,12 @@ class Menu extends React.Component {
             <button onClick = {() => {this.guess()}}>Guess  </button>
           </div>
           <div className="Results">
+            <br></br>
+          <button onClick = {() => {this.generate()}}>New Numbers!  </button>
+            <br></br>
             <p>{this.state.guessResult}</p>
           </div>
-                  </div>
+            </div>
       );
     }
 
