@@ -42,26 +42,34 @@ class Menu extends React.Component {
 
       let is24 = test24(this.state.nums);
 
+      if( ((this.state.input).toLowerCase().includes("no")) ){
+        if(is24){
+          this.setState({guessResult: 'Incorrect! There is a solution',})
+        } else {
+          this.setState({guessResult: 'Correct! No solution', })
+        }
+        return;
+      }
 
 
-      let res = '';
+
       if(eval?.(this.state.input) === 24){
       
-        res = '24! YOU WIN';
+        if(is24){
 
+          this.setState({guessResult: 'Correct!', })
+
+
+        } else {
+
+          this.setState({guessResult: 'Incorrect! 24 Cannot be made', })
+
+        }
+        return;
       }
-      
-      if(test24(this.state.nums)){
 
-
-
-
-      }
-
-      this.setState({
-        guessResult: res,
-      })
-
+      this.setState({guessResult: 'exception', })
+      return;
       
     }
 
@@ -100,9 +108,10 @@ class Menu extends React.Component {
             <input className = "Input" value = {this.state.input} onChange = {event => {this.inputUpdate(event)}}></input>
             <button onClick = {() => {this.guess()}}>Guess  </button>
           </div>
-
-          <p>{this.state.guessResult}</p>
-        </div>
+          <div className="Results">
+            <p>{this.state.guessResult}</p>
+          </div>
+                  </div>
       );
     }
 
@@ -131,37 +140,37 @@ render() {
   //Checks to see if you can +, /, -, * the elements inside the array in order to reach 24
   var test24 = function(list){
 
-    if(list.length == 1 && list[0] == 24) return true; 
+      if(list.length == 1 && list[0] == 24) return true; 
 
-    for(let i = 0; i < list.length; i++){
-      for(let j = 0; j < list.length; j++){
-        if(j != i) {
+      for(let i = 0; i < list.length; i++){
+        for(let j = 0; j < list.length; j++){
+          if(j != i) {
 
-          //I am not smart enough to do this nicely in 1 line each
-          let tList = list.slice();
-          tList[i] = tList[i] + tList[j];
-          tList.splice(j, 1);
-          if(test24(tList)) return true;
+            //I am not smart enough to do this nicely in 1 line each
+            let tList = list.slice();
+            tList[i] = tList[i] + tList[j];
+            tList.splice(j, 1);
+            if(test24(tList)) return true;
 
-          tList = list.slice();
-          tList[i] = tList[i] - tList[j];
-          tList.splice(j, 1);
-          if(test24(tList)) return true;
+            tList = list.slice();
+            tList[i] = tList[i] - tList[j];
+            tList.splice(j, 1);
+            if(test24(tList)) return true;
 
-          tList = list.slice();
-          tList[i] = tList[i] * tList[j];
-          tList.splice(j, 1);
-          if(test24(tList)) return true;
+            tList = list.slice();
+            tList[i] = tList[i] * tList[j];
+            tList.splice(j, 1);
+            if(test24(tList)) return true;
 
-          tList = list.slice();
-          tList[i] = tList[i] / tList[j];
-          tList.splice(j, 1);
-          if(test24(tList)) return true;
+            tList = list.slice();
+            tList[i] = tList[i] / tList[j];
+            tList.splice(j, 1);
+            if(test24(tList)) return true;
 
+          }
         }
       }
-    }
-    return false;
+      return false;
   }
 
 
