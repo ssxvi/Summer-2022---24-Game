@@ -20,25 +20,24 @@ class Menu extends React.Component {
       super(props);
 
       this.state = {
-        nums: Array(4).fill(null),
-        input: '',
-        guessResult: '',
+        nums: Array(4).fill(null),//List of cards
+        input: '', //Text from input box
+        guessResult: '', //Output
       }
 
-      this.generate()
+      this.generate() //generates 4 numbers for boxes
     }
 
     
     generate(){
-      const nums = this.state.nums.slice();
+      const nums = this.state.nums.slice();//copies nums to local nums but idk if this works right now even
       for (let i = 0; i < 4; i++){
-        this.state.nums[i] = Math.floor(Math.random()*8) + 1;
-        this.setState({nums: nums,})
+        this.state.nums[i] = Math.floor(Math.random()*8) + 1; //DOESNT USE SET STATE BUT ISNT WORKING GREAT RN, ONLY RUNS WHEN INSTANTIATING
       }
     }
 
 
-    guess(){
+    guess(){ //just checks is userinput is valid and matches the 24 statement
 
       let is24 = test24(this.state.nums);
 
@@ -75,20 +74,31 @@ class Menu extends React.Component {
       
     }
 
-    renderCard(i){
+    renderCard(i){ //card render function, bit easier to implement as funct rn but hopefully can make into class later
       return(        
         <div className="Card">
-          <h3>{this.state.nums[i]}</h3>    
+          <h3>{this.state.nums[i]}</h3>   
           <br></br>
         </div>
       )
     }
 
-  inputUpdate(event){
-      const val = event.target.value;     
+  inputUpdate(event){//changes input
+      const val = event.target.value; //idk how target value really works, need to learn more about that    
       this.setState({
         input: val,
       });
+    }
+
+    numUpdate(event){
+      const val = event.target.value; //welp we shall see
+      this.setState({
+
+        nums: val,
+
+      })
+
+
     }
 
     
@@ -96,7 +106,7 @@ class Menu extends React.Component {
 
     
     render() {
-      return (
+      return ( //dude i hate html comments, need to check why this.generate() isn't working in results
         <div>
           <Menu />
           <div className="Board">
@@ -145,16 +155,16 @@ render() {
   //Checks to see if you can +, /, -, * the elements inside the array in order to reach 24
   var test24 = function(list){
 
-      if(list.length == 1 && list[0] == 24) return true; 
+      if(list.length == 1 && (list[0] <= 24.000001 || list[0] >= 23.9999999)) return true; //i tested this with the leetcode version and i fucking hate [3,3,8,8] i dont get it man like istg i spent a good half hour trying to solve it by hand before googling i was so stubborn for what it's just rounding omg
 
       for(let i = 0; i < list.length; i++){
         for(let j = 0; j < list.length; j++){
           if(j != i) {
 
             //I am not smart enough to do this nicely in 1 line each
-            let tList = list.slice();
-            tList[i] = tList[i] + tList[j];
-            tList.splice(j, 1);
+            let tList = list.slice();//copies to tList
+            tList[i] = tList[i] + tList[j]; //adds 2 random components together
+            tList.splice(j, 1); //deletes of the components
             if(test24(tList)) return true;
 
             tList = list.slice();
