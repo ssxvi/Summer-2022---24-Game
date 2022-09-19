@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.5d64dfac.css",
-    "main.js": "/static/js/main.92afcd78.js",
-    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/index.html",
-    "main.5d64dfac.css.map": "/static/css/main.5d64dfac.css.map",
-    "main.92afcd78.js.map": "/static/js/main.92afcd78.js.map",
-    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/Summer-2022---24-Game/static/css/main.6155193f.css",
+    "main.js": "/Summer-2022---24-Game/static/js/main.f62fe1f5.js",
+    "index.html": "/Summer-2022---24-Game/index.html",
+    "main.6155193f.css.map": "/Summer-2022---24-Game/static/css/main.6155193f.css.map",
+    "main.f62fe1f5.js.map": "/Summer-2022---24-Game/static/js/main.f62fe1f5.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d64dfac.css",
-    "static/js/main.92afcd78.js"
+    "static/css/main.6155193f.css",
+    "static/js/main.f62fe1f5.js"
   ]
 }

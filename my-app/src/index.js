@@ -7,10 +7,25 @@ import './index.css';
 
 //NEED TO EDIT AND CHANGE
 class Menu extends React.Component {
+  constructor(props){
+      super(props);
+      this.state = {
+        menu: false,
+      }
+    }
+    
+  buildHelp() {
+
+  }
+
     render() {
       return (
         <div className="Menu">
-            <button className = "Start"><h2>Welcome to 24!</h2><br></br></button>
+            <button className = "Start">
+              
+              <h2>Welcome to the 24 Game!</h2><h5>Click here for help!</h5><br></br>
+              
+            </button>
         </div>
       );
     }
@@ -69,7 +84,9 @@ class Menu extends React.Component {
           this.setState({guessResult: 'Incorrect! 24 Cannot be made', })
 
         }
+
         return;
+
       } else {
         this.setState({guessResult: 'Incorrect! Answer does not equal 24', })
         return;
@@ -97,13 +114,8 @@ class Menu extends React.Component {
       this.generate();
       let val = this.state.nums; //welp we shall see
       this.setState({
-
         nums: val,
-
       })
-      
-
-
     }
 
     
