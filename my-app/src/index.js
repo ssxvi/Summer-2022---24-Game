@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from "react";
 import ReactDOM from 'react-dom/client';
 import './normalize.css';
 import './sakura.css';
@@ -18,6 +19,8 @@ class Menu extends React.Component {
   class Board extends React.Component {
     constructor(props){
       super(props);
+
+
 
       this.state = {
         nums: Array(4).fill(null),//List of cards
@@ -90,13 +93,15 @@ class Menu extends React.Component {
       });
     }
 
-    numUpdate(event){
-      const val = event.target.value; //welp we shall see
+    numUpdate(){
+      this.generate();
+      let val = this.state.nums; //welp we shall see
       this.setState({
 
         nums: val,
 
       })
+      
 
 
     }
@@ -122,7 +127,7 @@ class Menu extends React.Component {
           </div>
           <div className="Results">
             <br></br>
-          <button onClick = {() => {this.generate()}}>New Numbers!  </button>
+          <button onClick = {() => {this.numUpdate()}}>New Numbers!  </button>
             <br></br>
             <p>{this.state.guessResult}</p>
           </div>
