@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Summer-2022---24-Game/static/css/main.6155193f.css",
-    "main.js": "/Summer-2022---24-Game/static/js/main.f62fe1f5.js",
+    "main.js": "/Summer-2022---24-Game/static/js/main.006b1ac9.js",
     "index.html": "/Summer-2022---24-Game/index.html",
     "main.6155193f.css.map": "/Summer-2022---24-Game/static/css/main.6155193f.css.map",
-    "main.f62fe1f5.js.map": "/Summer-2022---24-Game/static/js/main.f62fe1f5.js.map"
+    "main.006b1ac9.js.map": "/Summer-2022---24-Game/static/js/main.006b1ac9.js.map"
   },
   "entrypoints": [
     "static/css/main.6155193f.css",
-    "static/js/main.f62fe1f5.js"
+    "static/js/main.006b1ac9.js"
   ]
 }
