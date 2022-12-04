@@ -13,7 +13,7 @@ class Menu extends React.Component {
         menu: false,
       }
     }
-    
+
   buildHelp() {
 
   }
@@ -23,7 +23,7 @@ class Menu extends React.Component {
         <div className="Menu">
             <button className = "Start">
               
-              <h2>Welcome to the 24 Game!</h2><h5>Click here for help!</h5><br></br>
+              <h2>Welcome to the 24 Game!</h2><br></br>
               
             </button>
         </div>
@@ -49,9 +49,11 @@ class Menu extends React.Component {
     
     generate(){
       const nums = this.state.nums.slice();//copies nums to local nums but idk if this works right now even
-      for (let i = 0; i < 4; i++){
-        this.state.nums[i] = Math.floor(Math.random()*8) + 1; //DOESNT USE SET STATE BUT ISNT WORKING GREAT RN, ONLY RUNS WHEN INSTANTIATING
-      }
+      do {
+        for (let i = 0; i < 4; i++){
+          this.state.nums[i] = Math.floor(Math.random()*8) + 1; //DOESNT USE SET STATE BUT ISNT WORKING GREAT RN, ONLY RUNS WHEN INSTANTIATING
+        }
+      } while(!test24(this.state.nums));
     }
 
 
@@ -69,7 +71,7 @@ class Menu extends React.Component {
       }
 
       if(!checkExpression(this.state.input, this.state.nums)){
-        this.setState({guessResult: 'Input is invalid! Try again', })
+        this.setState({guessResult: 'Invalid Input! Make sure to use all 4 numbers and only +, -, *, /', })
         return;
       }
 
@@ -115,6 +117,7 @@ class Menu extends React.Component {
       let val = this.state.nums; //welp we shall see
       this.setState({
         nums: val,
+        input: '',
       })
     }
 
@@ -172,7 +175,7 @@ render() {
   //Checks to see if you can +, /, -, * the elements inside the array in order to reach 24
   var test24 = function(list){
 
-      if(list.length == 1 && (list[0] <= 24.000001 || list[0] >= 23.9999999)) return true; //i tested this with the leetcode version and i fucking hate [3,3,8,8] i dont get it man like istg i spent a good half hour trying to solve it by hand before googling i was so stubborn for what it's just rounding omg
+      if(list.length == 1 && (list[0] <= 24.000001 && list[0] >= 23.9999999)) return true; //i tested this with the leetcode version and i fucking hate [3,3,8,8] i dont get it man like istg i spent a good half hour trying to solve it by hand before googling i was so stubborn for what it's just rounding omg
 
       for(let i = 0; i < list.length; i++){
         for(let j = 0; j < list.length; j++){
