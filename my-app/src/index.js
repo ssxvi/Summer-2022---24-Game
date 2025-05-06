@@ -49,11 +49,11 @@ class Menu extends React.Component {
     
     generate(){
       const nums = this.state.nums.slice();//copies nums to local nums but idk if this works right now even
-      do {
+      //do {
         for (let i = 0; i < 4; i++){
           this.state.nums[i] = Math.floor(Math.random()*8) + 1; //DOESNT USE SET STATE BUT ISNT WORKING GREAT RN, ONLY RUNS WHEN INSTANTIATING
         }
-      } while(!test24(this.state.nums));
+      //} while(!test24(this.state.nums));
     }
 
 
